@@ -5,7 +5,6 @@
 
 namespace Omnipay\Pin\Message;
 
-use Psr\Http\Message\RequestInterface;
 
 /**
  * Pin Abstract REST Request
@@ -119,7 +118,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      *
      * @return HttpResponse
      */
-    public function sendRequest($action, $data = null, $method = RequestInterface::POST)
+    public function sendRequest($action, $data = null, $method = 'POST')
     {
         // don't throw exceptions for 4xx errors
         $this->httpClient->getEventDispatcher()->addListener(
