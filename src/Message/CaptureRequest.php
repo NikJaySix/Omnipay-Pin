@@ -5,7 +5,6 @@
 
 namespace Omnipay\Pin\Message;
 
-use GuzzleHttp\Psr7\Request as RequestInterface;
 
 /**
  * Pin Capture Request

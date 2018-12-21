@@ -5,7 +5,6 @@
 
 namespace Omnipay\Pin\Message;
 
-
 /**
  * Pin Abstract REST Request
  *
@@ -15,8 +14,8 @@ namespace Omnipay\Pin\Message;
  *
  * The API has two endpoint host names:
  *
- * * api.pinpayments.com (live)
- * * test-api.pinpayments.com (test)
+ * * api.pin.net.au (live)
+ * * test-api.pin.net.au (test)
  *
  * The live host is for processing live transactions, whereas the test
  * host can be used for integration testing and development.
@@ -47,7 +46,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      * @var string URL
      */
     protected $liveEndpoint = 'https://api.pinpayments.com/';
-    protected $action;
 
     /**
      * Get secret key
@@ -110,4 +108,33 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $base . self::API_VERSION;
     }
 
+    /**
+     * Send a request to the gateway.
+     *
+     * @param string $action
+     * @param array  $data
+     * @param string $method
+     *
+     * @return HttpResponse
+     */
+    public function sendRequest($action, $data = null, $method = RequestInterface::POST)
+    {
+        // don't throw exceptions for 4xx errors
+        $this->httpClient->getEventDispatcher()->addListener(
+            'request.error',
+            function ($event) {
+                if ($event['response']->isClientError()) {
+                    $event->stopPropagation();
+                }
+            }
+        );
+
+        // Return the response we get back from Pin Payments
+        return $this->httpClient->createRequest(
+            $method,
+            $this->getEndpoint() . $action,
+            array('Authorization' => 'Basic ' . base64_encode($this->getSecretKey() . ':')),
+            $data
+        )->send();
+    }
 }
