@@ -5,7 +5,7 @@
 
 namespace Omnipay\Pin\Message;
 
-use Guzzle\Http\Message\RequestInterface;
+use GuzzleHttp\Psr7\Request as RequestInterface;
 
 /**
  * Pin Abstract REST Request
