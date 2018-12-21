@@ -136,6 +136,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             $this->getEndpoint() . $action,
             array('Authorization' => 'Basic ' . base64_encode($this->getSecretKey() . ':')),
             json_encode($data)
-        )->send();
+        );
     }
 }
