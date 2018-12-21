@@ -5,7 +5,6 @@
 
 namespace Omnipay\Pin\Message;
 
-use GuzzleHttp\Psr7\Request as RequestInterface;
 
 /**
  * Pin Abstract REST Request
@@ -48,6 +47,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      * @var string URL
      */
     protected $liveEndpoint = 'https://api.pinpayments.com/';
+    protected $action;
 
     /**
      * Get secret key
@@ -110,33 +110,4 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $base . self::API_VERSION;
     }
 
-    /**
-     * Send a request to the gateway.
-     *
-     * @param string $action
-     * @param array  $data
-     * @param string $method
-     *
-     * @return HttpResponse
-     */
-    public function sendRequest($action, $data = null, $method = RequestInterface::POST)
-    {
-        // don't throw exceptions for 4xx errors
-        $this->httpClient->getEventDispatcher()->addListener(
-            'request.error',
-            function ($event) {
-                if ($event['response']->isClientError()) {
-                    $event->stopPropagation();
-                }
-            }
-        );
-
-        // Return the response we get back from Pin Payments
-        return $this->httpClient->createRequest(
-            $method,
-            $this->getEndpoint() . $action,
-            array('Authorization' => 'Basic ' . base64_encode($this->getSecretKey() . ':')),
-            $data
-        )->send();
-    }
 }
