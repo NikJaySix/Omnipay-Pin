@@ -1,3 +1,7 @@
+# NikJaySix: Omnipay Pin Payments
+
+Cloned to update dependencies
+
 # Omnipay: Pin Payments
 
 **Pin Payments driver for the Omnipay PHP payment processing library**
@@ -21,7 +25,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "omnipay/pin": "~2.0"
+        "nikjaysix/omnipay-pin": "1.0"
     }
 }
 ```
