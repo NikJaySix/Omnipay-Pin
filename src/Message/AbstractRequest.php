@@ -15,8 +15,8 @@ namespace Omnipay\Pin\Message;
  *
  * The API has two endpoint host names:
  *
- * * api.pin.net.au (live)
- * * test-api.pin.net.au (test)
+ * * api.pinpayments.com (live)
+ * * test-api.pinpayments.com (test)
  *
  * The live host is for processing live transactions, whereas the test
  * host can be used for integration testing and development.
