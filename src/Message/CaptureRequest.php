@@ -28,6 +28,6 @@ class CaptureRequest extends AbstractRequest
             $data,
             'PUT'
         );
-        return $this->response = new CaptureResponse($this, json_decode($httpResponse));
+        return $this->response = new CaptureResponse($this, $httpResponse->getBody()->getContents());
     }
 }

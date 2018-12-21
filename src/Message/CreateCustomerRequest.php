@@ -100,6 +100,6 @@ class CreateCustomerRequest extends AbstractRequest
     {
         $httpResponse = $this->sendRequest('/customers', $data);
 
-        return $this->response = new Response($this, json_decode($httpResponse));
+        return $this->response = new Response($this, $httpResponse->getBody()->getContents());
     }
 }
