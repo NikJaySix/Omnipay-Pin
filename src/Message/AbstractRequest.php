@@ -131,7 +131,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         );*/
 
         // Return the response we get back from Pin Payments
-        return $this->httpClient->createRequest(
+        return $this->httpClient->request(
             $method,
             $this->getEndpoint() . $action,
             array('Authorization' => 'Basic ' . base64_encode($this->getSecretKey() . ':')),
