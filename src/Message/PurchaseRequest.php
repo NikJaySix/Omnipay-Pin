@@ -157,7 +157,7 @@ class PurchaseRequest extends AbstractRequest
     {
         $httpResponse = $this->sendRequest('/charges', $data);
 
-        return $this->response = new Response($this, $httpResponse->json());
+        return $this->response = new Response($this, $httpResponse);
     }
 
     /**
