@@ -25,7 +25,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "nikjaysix/omnipay-pin": "1.0"
+        "nikjaysix/omnipay-pin": "1.1"
     }
 }
 ```
