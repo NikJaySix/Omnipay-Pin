@@ -5,6 +5,8 @@
 
 namespace Omnipay\Pin\Message;
 
+use Psr\Http\Message\RequestInterface;
+
 /**
  * Pin Abstract REST Request
  *
