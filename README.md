@@ -1,6 +1,6 @@
 # NikJaySix: Omnipay Pin Payments
 
-Cloned to update dependencies
+**Cloned to update for version 3 of Omnipay**
 
 # Omnipay: Pin Payments
 
