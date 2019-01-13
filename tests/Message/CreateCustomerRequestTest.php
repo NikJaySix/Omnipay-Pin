@@ -22,7 +22,7 @@ class CreateCustomerRequestTest extends TestCase
         $this->request->setToken('card_abc');
         $data = $this->request->getData();
 
-        $this->assertSame('card_abc', $data['token']);
+        $this->assertSame('card_abc', $data['card_token']);
     }
 
     public function testDataWithCard()
