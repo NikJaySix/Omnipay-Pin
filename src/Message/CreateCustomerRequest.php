@@ -76,7 +76,7 @@ class CreateCustomerRequest extends AbstractRequest
         $data['email'] = $this->getEmail();
 
         if ($this->getToken()) {
-            $data['card_token'] = $this->getToken();
+            $data['token'] = $this->getToken();
         } else {
             $this->getCard()->validate();
 
