@@ -9,7 +9,7 @@ class CaptureResponseTest extends TestCase
     public function testCaptureSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('CaptureSuccess.txt');
-        $response = new CaptureResponse($this->getMockRequest(), $httpResponse->json());
+        $response = new CaptureResponse($this->getMockRequest(), json_decode($httpResponse->getBody(), true));
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
@@ -20,7 +20,7 @@ class CaptureResponseTest extends TestCase
     public function testCaptureFailure()
     {
         $httpResponse = $this->getMockHttpResponse('CaptureFailure.txt');
-        $response = new CaptureResponse($this->getMockRequest(), $httpResponse->json());
+        $response = new CaptureResponse($this->getMockRequest(), json_decode($httpResponse->getBody(), true));
 
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
