@@ -113,7 +113,7 @@ class PurchaseRequest extends AbstractRequest
         }
         if (! empty($token)) {
             if (strpos($token, 'card_') !== false) {
-                $data['token'] = $token;
+                $data['card_token'] = $token;
             } else {
                 $data['customer_token'] = $token;
             }
