@@ -33,8 +33,9 @@ namespace Omnipay\Pin\Message;
  * and one of the following:
  *
  * * card 	The full details of the credit card to be charged (CreditCard object)
- * * card_token 	Token of the card to be charged, as returned from the card
- *   tokens API or customer API.
+ * * token 	Token of the card to be charged, as returned from the card
+ *   tokens API or customer API.  THIS NEEDS TO BE 'token' not 'card_token' or
+ *   Omnipay expects a 'card' parameter.
  * * customer_token 	Token of the customer to be charged, as returned
  *   from the customers API.
  *
